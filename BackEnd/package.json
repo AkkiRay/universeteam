@@ -11,6 +11,10 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
+    "mongodb": "^5.7.0",
+    "mongoose": "^7.3.4",
+    "mysql2": "^3.5.1",
+    "node-cron": "^3.0.2",
     "nodemon": "^2.0.6",
     "steam-login": "^0.1.7"
   }
