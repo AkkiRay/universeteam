@@ -5,6 +5,7 @@ import AccountBound from '../components/AccountBound.jsx';
 import StatsBound from '../components/StatsBound.jsx';
 import BlackMarket from '../components/BlackMarket.jsx';
 import BanNotice from '../components/BanNotice.jsx';
+import ButtonBounds from '../components/ButtonBounds.jsx';
 
 function timeConverter(UNIX_timestamp){
   var a = new Date(UNIX_timestamp * 1000);
@@ -27,10 +28,15 @@ const Profile = (props) => {
       <NavBar userSteam={userSteam} userStalker={userStalker} />
       {userStalker ? (
         <>
+          <label className={cl.PageContainerHead}>
+            <span className={cl.namePage}>ВАШ ПРОФИЛЬ</span>
+            <p className={cl.descPage}>USER</p>
+          </label>
           <BanNotice {...props} />
           <main className={cl.container}>
             <label className={cl.grid__section}>
               <AccountBound {...props} />
+              <ButtonBounds {...props} />
               <div className={cl.Invetory_container}></div>
               <BlackMarket {...props} />
             </label>

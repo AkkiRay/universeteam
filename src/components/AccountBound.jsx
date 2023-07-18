@@ -139,8 +139,6 @@ const AccountBound = (props) => {
   }
   if (characters) {
     return (
-      
-      <ul>
         <label className = {cl.profile}>
           <BanPlate {...props}/>
           <div className = {cl.profile__container}>
@@ -162,13 +160,12 @@ const AccountBound = (props) => {
                 <span className= {cl.button_text}>ПОПОЛНИТЬ СЧЕТ</span>
               </label>
               <label className={cl.container_buttonVIP}>
-              <span className= {cl.button_textVIP}>+</span>
-              <span className= {cl.button_textVIP}>V I P</span>
-            </label>
+                <span className= {cl.button_textVIP}>+</span>
+                <span className= {cl.button_textVIP}>V I P</span>
+              </label>
             </div>
           </div>
         </label>
-      </ul>
     )
   }
 }

@@ -21,10 +21,11 @@ function App() {
                 if (response.data.success) {
                   setStalkerUser(response.data.data);
                 } else {
-                  setStalkerUser([]);
+                  setStalkerUser(null);
                 }
               })
               .catch(error => {
+                setStalkerUser(null);
                 console.error("Ошибка при получении данных персонажа:", error);
               });
         } else {
