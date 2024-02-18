@@ -89,7 +89,7 @@ app.get("/get_character", (req, res) => {
               console.error("Ошибка при выполнении запроса к базе данных:", err);
               return res
                 .status(500)
-                .json({ success: false, message: "Ошибка сервера" });
+                .json({ success: false, message: "Ошибка сервера 1" });
             }
             
             db.query(
@@ -100,7 +100,7 @@ app.get("/get_character", (req, res) => {
                   console.error("Ошибка при выполнении запроса к базе данных:", err);
                   return res
                     .status(500)
-                    .json({ success: false, message: "Ошибка сервера" });
+                    .json({ success: false, message: "Ошибка сервера 2" });
                 }
                 
                 db.query(
@@ -111,7 +111,7 @@ app.get("/get_character", (req, res) => {
                       console.error("Ошибка при выполнении запроса к базе данных:", err);
                       return res
                         .status(500)
-                        .json({ success: false, message: "Ошибка сервера" });
+                        .json({ success: false, message: "Ошибка сервера 3" });
                     }
                     
                     db.query(
@@ -122,7 +122,7 @@ app.get("/get_character", (req, res) => {
                           console.error("Ошибка при выполнении запроса к базе данных:", err);
                           return res
                             .status(500)
-                            .json({ success: false, message: "Ошибка сервера" });
+                            .json({ success: false, message: "Ошибка сервера 4" });
                         }
                         
                         const data = {

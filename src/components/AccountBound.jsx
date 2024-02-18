@@ -62,6 +62,7 @@ const AccountBound = (props) => {
             </div>
           </div>
         </label>
+    )
       </ul>
     );
   } else {

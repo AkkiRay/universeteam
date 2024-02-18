@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Ropa+Sans&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
+$animateSpeed: 1s;
+
 html, body {
   font-family: Source Sans Pro;
   font-style: normal;
@@ -32,7 +34,7 @@ html, body {
     letter-spacing: 0.253em;
     text-transform: uppercase;
     color: #FFFFFF;
-    transition-duration: 1s;
+    transition-duration: $animateSpeed;
 }
 
 .blackMarket_donate {
@@ -78,7 +80,7 @@ html, body {
   letter-spacing: 0.018em;
 
   color: #FFFFFF;
-  transition-duration: 1s;
+  transition-duration: $animateSpeed;
 }
 
 .blackMarket_desc {
@@ -99,13 +101,16 @@ html, body {
     letter-spacing: 0.018em;
 
     color: #FFFFFF;
-    transition-duration: 1s;
+    transition-duration: $animateSpeed;
 }
 
 
 .blackMarket_container {
     display: flex;
-    width: 100%;
+    margin: 0 auto;
+    grid-column: 1;
+    grid-row: 2;
+    width: 94%;
     height: 96px;
     align-items: center;
     flex-flow: column;
@@ -115,7 +120,7 @@ html, body {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    transition-duration: 1s;
+    transition-duration: $animateSpeed;
 }
 
 .blackMarket_container:hover{
@@ -123,19 +128,19 @@ html, body {
   cursor: pointer;
   opacity: 0.9;
   border: 1px solid #fff;
-  transition-duration: 1s;
+  transition-duration: $animateSpeed;
 }
 
 .blackMarket_container:hover .blackMarket_name{
   display: flex;
   letter-spacing: 0.598em;
-  transition-duration: 1s;
+  transition-duration: $animateSpeed;
 }
 
 .blackMarket_container:hover .blackMarket_desc{
   display: flex;
   letter-spacing: 0.498em;
-  transition-duration: 1s;
+  transition-duration: $animateSpeed;
 }
 
 
@@ -147,20 +152,154 @@ html, body {
 .container {
   display: flex;
   justify-content: center;
+  align-items: center;
   padding-top: 34px;
 }
 
-.container {
+.PageContainerHead {
   display: flex;
+  flex-flow: column;
   justify-content: center;
-  padding-top: 34px;
+  align-items: center;
+  margin-top: 35px;
+  margin-bottom: 85px;
+}
+
+.namePage {
+  color: #FFF;
+  font-family: Inter;
+  font-size: 45px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: normal;
+  letter-spacing: -0.765px;
+}
+
+.descPage {
+  color: #FFF;
+  text-align: center;
+  font-family: Inter;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 0.765px;
+  border: 1px solid #FFF;
+  border-radius: 10px;
+  padding: 5px 15px 5px 15px;
+}
+
+.errorMessage {
+  display: flex;
+  font-weight: 800;
+  font-size: 24px;
+  color: #FFF;
 }
 
 .grid__section {
   display: grid;
-  width:50%;
-  gap: 20px 22px;
-  grid-template-columns: 626px 394px;
+  min-width: auto;
+  max-width: 1280px;
+  gap: 20px 20px;
+  grid-template-columns: 425px 300px 400px;
+  grid-template-rows: auto;
+}
+
+.profile__button {
+  cursor: pointer;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+  justify-content: center;
+  margin: 0 auto;
+  width: 295px;
+  height: 105px;
+  border-radius: 15px;
+  background: #1D1D1D;
+  list-style-type: none;
+  flex-flow: column;
+}
+
+.button__text_header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-left: 55px;
+  margin-bottom: 10px;
+  color: #4E4E4E;
+  font-family: Inter;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 1.08px;
+}
+
+.button__text{
+  display: flex;
+  align-items: center;
+  margin-left: 8px;
+  margin-top: 2px;
+  color: #FFF;
+  font-family: Inter;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+  letter-spacing: 1.296px;
+}
+
+.buttonInfo{
+  display: flex;
+  align-items: center;
+  height: 20px;
+  margin-left: 55px;  
+}
+
+.buttonIconBackground {
+  position: absolute;
+  width: 125px;
+  height: 125px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  margin-left: 65%;
+  margin-top: 10%;
+  transition-duration: $animateSpeed;
+}
+
+.profile__button:hover #rep {
+  width: 150px;
+  height: 150px;
+  margin-left: 55%;
+  margin-top: 15%;
+  filter: invert(100%) sepia(26%) saturate(804%) hue-rotate(56deg) brightness(100%) contrast(100%);
+}
+
+#rep {
+  filter: invert(99%) sepia(1%) saturate(2%) hue-rotate(253deg) brightness(113%) contrast(100%);
+  background-image: url('../assets/rep_up.svg');
+}
+
+#donate {
+  background-image: url('../assets/currencyDonate.svg');
+}
+
+#currency {
+  background-image: url('../assets/currencyInGame.svg');
+}
+
+.rep {
+  @extend #rep;
+}
+
+.donate {
+  @extend #donate;
+}
+
+.currency {
+  @extend #currency;
 }
 
 @media (max-width:1024px) {
