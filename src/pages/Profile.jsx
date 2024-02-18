@@ -2,11 +2,10 @@ import React from 'react'
 import cl from '../css/account.module.scss';
 import { NavBar } from '../components/NavBar.jsx';
 import AccountBound from '../components/AccountBound.jsx';
-import StatsBound from '../components/StatsBound.jsx';
-import BlackMarket from '../components/BlackMarket.jsx';
+//import StatsBound from '../components/StatsBound.jsx';
 import BanNotice from '../components/BanNotice.jsx';
 
-function timeConverter(UNIX_timestamp){
+/*function timeConverter(UNIX_timestamp){
   var a = new Date(UNIX_timestamp * 1000);
   var months = ['Янв','Фев','Мар','Апр','Май','Июн','Июль','Авг','Сен','Окт','Ноя','Дек'];
   var year = a.getFullYear();
@@ -17,7 +16,7 @@ function timeConverter(UNIX_timestamp){
   var sec = a.getSeconds();
   var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec ;
   return time;
-}
+}*/
 
 const Profile = (props) => {
   const { userStalker, userSteam } = props;
@@ -32,7 +31,6 @@ const Profile = (props) => {
             <label className={cl.grid__section}>
               <AccountBound {...props} />
               <div className={cl.Invetory_container}></div>
-              <BlackMarket {...props} />
             </label>
           </main>
         </>

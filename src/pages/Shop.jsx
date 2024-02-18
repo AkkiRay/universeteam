@@ -7,7 +7,6 @@ const Shop = (props) => {
     return (
       <div>
         <NavBar userSteam={props.userSteam} userStalker={props.userStalker} />
-        <BanNotice {...props}/>
         <main className = {cl.container}>
           <section className = {cl.shopContainer}>
             <label className = {cl.shopTagName}>

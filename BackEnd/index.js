@@ -3,6 +3,7 @@ const steam = require("steam-login");
 const cors = require("cors");
 const session = require("express-session");
 const mysql = require("mysql2");
+const Long = require('long');
 
 const app = express();
 
@@ -16,7 +17,7 @@ app.use(
 
 app.use(
   session({
-    secret: "a secret",
+    secret: "utTeamSecretKey",
     resave: false,
     saveUninitialized: false,
   })
@@ -32,7 +33,7 @@ app.use(
 
 // Создайте подключение к базе данных MySQL
 const db = mysql.createConnection({
-  host: "212.22.93.142",
+  host: "212.22.93.138",
   user: "clwin",
   password: "woofpass432",
   database: "stalker",
@@ -48,12 +49,27 @@ db.connect((err) => {
   }
 });
 
+function steamId64to32(steamID){
+  const id64 = Long.fromString(steamID, true, 10);
+  const xMask = Long.fromString("FF00000000000000", true, 16);
+  const yMask = Long.fromString("0000000000000001", true, 16);
+  const zMask = Long.fromString("00000000FFFFFFFE", true, 16);
+
+  // Convert the steamID.
+  const x = id64.and(xMask).shiftRightUnsigned(57);
+  const y = id64.and(yMask);
+  const z = id64.and(zMask).shiftRightUnsigned(1);
+  // Return as string
+  return `STEAM_${x}:${y}:${z}`
+}
+
 app.get("/get_character", (req, res) => {
-  const steamId = req.query.steamid;
+  const steamID64 = req.query.steamid;
+  const steamID = steamId64to32(req.query.steamid);
   res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
   db.query(
     "SELECT * FROM ix_characters WHERE steamid = ?",
-    [steamId],
+    [steamID64],
     (err, characterResults) => {
       if (err) {
         console.error("Ошибка при выполнении запроса к базе данных:", err);
@@ -63,11 +79,11 @@ app.get("/get_character", (req, res) => {
       }
 
       if (characterResults.length > 0) {
-        const character = characterResults[0];
+        var character = characterResults[0];
         
         db.query(
           "SELECT * FROM ix_stats WHERE steamid = ?",
-          [steamId],
+          [steamID64],
           (err, statsResults) => {
             if (err) {
               console.error("Ошибка при выполнении запроса к базе данных:", err);
@@ -78,7 +94,7 @@ app.get("/get_character", (req, res) => {
             
             db.query(
               "SELECT * FROM ix_players WHERE steamid = ?",
-              [steamId],
+              [steamID64],
               (err, playersResults) => {
                 if (err) {
                   console.error("Ошибка при выполнении запроса к базе данных:", err);
@@ -88,8 +104,8 @@ app.get("/get_character", (req, res) => {
                 }
                 
                 db.query(
-                  "SELECT * FROM lsql_bans WHERE steamid = ? AND unbannedby IS NULL",
-                  [steamId],
+                  "SELECT * FROM sam_bans WHERE steamid = ?",
+                  [steamID],
                   (err, bansResults) => {
                     if (err) {
                       console.error("Ошибка при выполнении запроса к базе данных:", err);
@@ -99,8 +115,8 @@ app.get("/get_character", (req, res) => {
                     }
                     
                     db.query(
-                      "SELECT * FROM lsql_users WHERE steamid = ?",
-                      [steamId],
+                      "SELECT * FROM sam_players WHERE steamid = ?",
+                      [steamID],
                       (err, ulxResults) => {
                         if (err) {
                           console.error("Ошибка при выполнении запроса к базе данных:", err);
@@ -110,11 +126,11 @@ app.get("/get_character", (req, res) => {
                         }
                         
                         const data = {
-                          ix_characters: characterResults[0],
+                          ix_characters: character,
                           ix_stats: statsResults[0],
                           ix_players: playersResults[0],
-                          ix_bans: bansResults[0],
-                          ix_ulx: ulxResults[0],
+                          sam_bans: bansResults[0],
+                          sam_players: ulxResults[0],
                         };
                         
                         return res.status(200).json({
