@@ -75,7 +75,7 @@ app.get("/get_character", (req, res) => {
         console.error("Ошибка при выполнении запроса к базе данных:", err);
         return res
           .status(500)
-          .json({ success: false, message: "Ошибка сервера" });
+          .json({ success: false, message: "Ошибка сервера: персонаж не найден" });
       }
 
       if (characterResults.length > 0) {
@@ -89,7 +89,7 @@ app.get("/get_character", (req, res) => {
               console.error("Ошибка при выполнении запроса к базе данных:", err);
               return res
                 .status(500)
-                .json({ success: false, message: "Ошибка сервера 1" });
+                .json({ success: false, message: "Ошибка сервера: статистика не найдена" });
             }
             
             db.query(
@@ -100,7 +100,7 @@ app.get("/get_character", (req, res) => {
                   console.error("Ошибка при выполнении запроса к базе данных:", err);
                   return res
                     .status(500)
-                    .json({ success: false, message: "Ошибка сервера 2" });
+                    .json({ success: false, message: "Ошибка сервера: игрок не найден" });
                 }
                 
                 db.query(
@@ -111,7 +111,7 @@ app.get("/get_character", (req, res) => {
                       console.error("Ошибка при выполнении запроса к базе данных:", err);
                       return res
                         .status(500)
-                        .json({ success: false, message: "Ошибка сервера 3" });
+                        .json({ success: false, message: "Ошибка сервера: баны не найдены" });
                     }
                     
                     db.query(
@@ -122,7 +122,7 @@ app.get("/get_character", (req, res) => {
                           console.error("Ошибка при выполнении запроса к базе данных:", err);
                           return res
                             .status(500)
-                            .json({ success: false, message: "Ошибка сервера 4" });
+                            .json({ success: false, message: "Ошибка сервера: привелегии не найдены" });
                         }
                         
                         const data = {

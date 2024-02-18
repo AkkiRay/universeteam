@@ -3,7 +3,6 @@ import cl from '../css/account.module.scss';
 import { NavBar } from '../components/NavBar.jsx';
 import AccountBound from '../components/AccountBound.jsx';
 //import StatsBound from '../components/StatsBound.jsx';
-import BanNotice from '../components/BanNotice.jsx';
 import ButtonBounds from '../components/ButtonBounds.jsx';
 
 /*function timeConverter(UNIX_timestamp){
@@ -31,7 +30,6 @@ const Profile = (props) => {
             <span className={cl.namePage}>ВАШ ПРОФИЛЬ</span>
             <p className={cl.descPage}>USER</p>
           </label>
-          <BanNotice {...props} />
           <main className={cl.container}>
             <label className={cl.grid__section}>
               <AccountBound {...props} />
