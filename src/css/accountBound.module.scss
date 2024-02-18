@@ -28,6 +28,7 @@ $animateSpeed: 0.5s;
   background: #1D1D1D;
   list-style-type: none;
   flex-flow: column;
+  box-sizing: border-box;
 }
 
 .profile__container {
@@ -40,13 +41,24 @@ $animateSpeed: 0.5s;
 
 .charContainer {
   display: flex;
-  margin-top: 10px;
   justify-content: space-between;
 }
 
 .container_charName {
   display: flex;
   flex-flow: column;
+}
+
+.charTimeWithUs {
+  display: flex;
+  color: #7B7B7B;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.272px;
+  margin-top: 10px;
 }
 
 .charName_header {

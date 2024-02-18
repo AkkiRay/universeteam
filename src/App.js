@@ -4,6 +4,7 @@ import axios from 'axios';
 import Home from './pages/Home.jsx';
 import NotFound from './pages/NotFound.jsx';
 import Profile from "./pages/Profile.jsx";
+import Shop from "./pages/Shop.jsx";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -44,7 +45,7 @@ function App() {
       <Route exact path="/home" element={<Home userSteam={user} userStalker={stalkerUser} />} />
       <Route exact path="/about" element={<Home userSteam={user} userStalker={stalkerUser} />} />
       <Route path="/account" element={<Profile userSteam={user} userStalker={stalkerUser} />} />
-      <Route path="/shop" element={<Home userSteam={user} userStalker={stalkerUser} />} />
+      <Route path="/shop" element={<Shop userSteam={user} userStalker={stalkerUser} />} />
       <Route path="/leaderboard" element={<Home userSteam={user} userStalker={stalkerUser} />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
