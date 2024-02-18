@@ -266,7 +266,7 @@ html, body {
   background-position: center;
   margin-left: 65%;
   margin-top: 10%;
-  transition-duration: $animateSpeed;
+  transition: margin-left $animateSpeed, margin-top $animateSpeed, width $animateSpeed, height $animateSpeed;
 }
 
 .profile__button:hover #rep {

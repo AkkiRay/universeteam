@@ -1,7 +1,6 @@
 import React from 'react'
 import cl from '../css/shop.module.scss';
 import { NavBar } from '../components/NavBar.jsx';
-import BanNotice from '../components/BanNotice.jsx';
 
 const Shop = (props) => {
     return (
