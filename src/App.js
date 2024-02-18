@@ -17,6 +17,7 @@ function App() {
         if (response.data.success) {
           setUser(response.data.user)
             var steamid = response.data.user._json.steamid
+            console.log(steamid)
             axios.get(`http://localhost:2000/get_character?steamid=${steamid}`)
               .then(response => {
                 if (response.data.success) {

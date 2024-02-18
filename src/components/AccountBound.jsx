@@ -21,7 +21,6 @@ const AccountBound = (props) => {
         }
       }
     };
-    
     fetchData();
 
     const intervalId = setInterval(fetchData, 60000);
@@ -62,7 +61,6 @@ const AccountBound = (props) => {
             </div>
           </div>
         </label>
-    )
       </ul>
     );
   } else {

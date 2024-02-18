@@ -7,17 +7,12 @@ import { ReactComponent as CurrencyIcon }  from '../assets/currencyInGame.svg';
 const ButtonBounds = (props) => {
   if (props.userStalker !== null) {
     var characters = props.userStalker.ix_characters;
-    var stats = props.userStalker.ix_stats;
-    var info = props.userStalker.ix_players;
-    var bans = props.userStalker.ix_bans;
-    var ulx = props.userStalker.ix_ulx;
-    var charData = characters.data;
+    //var stats = props.userStalker.ix_stats;
+    //var info = props.userStalker.ix_players;
+    //var bans = props.userStalker.ix_bans;
+    //var ulx = props.userStalker.ix_ulx;
+    //var charData = characters.data;
   }
-
-  const formatter = new Intl.NumberFormat('ru-RU', {
-    style: 'currency',
-    currency: 'RUB',
-  });
 
   if (characters) {
     return (
