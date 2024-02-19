@@ -65,6 +65,7 @@ function steamId64to32(steamID){
 
 app.get("/get_character", (req, res) => {
   const steamID64 = req.query.steamid;
+
   const steamID = steamId64to32(req.query.steamid);
   res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
   db.query(
